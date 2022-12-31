@@ -2,7 +2,7 @@
 
 namespace streamerbot_tools.GrowYourFurby;
 
-public class CPHInline
+public class GrowYourFurby
 {
     // Note: Delete this line if copying directly into Streamer.bot
     private readonly Dictionary<string, object> args = new();
@@ -11,29 +11,20 @@ public class CPHInline
     {
         string username = args["user"]?.ToString() ?? string.Empty;
         string filePath = args["filePath"]?.ToString() ?? string.Empty;
-
         if (string.IsNullOrWhiteSpace(username))
         {
             CPH.SetArgument("errorMsg", "User cannot be empty");
             return false;
         }
 
-        var furbySizes = new Dictionary<string, int>();
-
         if (!File.Exists(filePath))
         {
-            furbySizes.Add(username, 1);
-
-            // File.Create(filePath);
-            File.WriteAllText(filePath, JsonConvert.SerializeObject(furbySizes));
-
-            CPH.SetArgument("furbySize", 1);
-            return true;
+            CPH.SetArgument("errorMsg", $"File with path '{filePath}' does not exist");
+            return false;
         }
 
         string fileContents = File.ReadAllText(filePath);
-        furbySizes = JsonConvert.DeserializeObject<Dictionary<string, int>>(fileContents) ?? new Dictionary<string, int>();
-
+        Dictionary<string, int> furbySizes = JsonConvert.DeserializeObject<Dictionary<string, int>>(fileContents) ?? new Dictionary<string, int>();
         if (furbySizes.TryGetValue(username, out int furbySize))
         {
             furbySize += 1;
@@ -46,9 +37,7 @@ public class CPHInline
         }
 
         File.WriteAllText(filePath, JsonConvert.SerializeObject(furbySizes));
-
         CPH.SetArgument("furbySize", furbySize);
-
         return true;
     }
 }
