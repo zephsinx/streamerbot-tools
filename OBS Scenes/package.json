@@ -1,0 +1,11 @@
+{
+  "name": "obs-scenes",
+  "version": "0.0.1",
+  "description": "A set of OBS scenes to use for any reason",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "zephsinx",
+  "license": "ISC"
+}

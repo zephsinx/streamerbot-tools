@@ -4,7 +4,6 @@ namespace streamerbot_tools.GrowYourFurby;
 
 public class GrowYourFurby
 {
-    // Note: Delete this line if copying directly into Streamer.bot
     private readonly Dictionary<string, object> args = new();
 
     public bool Execute()

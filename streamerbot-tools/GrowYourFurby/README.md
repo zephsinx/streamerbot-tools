@@ -11,7 +11,7 @@
 
 ## Setup Instructions
 
-- Copy the import string from the [Import File](GrowYourFurby_Import.txt)
+- Copy the import string from the [Import File](GrowYourFurbyImport.txt)
 - Click the Import button on Streamer.bot
 - Select which actions and commands to import
 - Make sure to set a path to the file that will hold the furby counts
