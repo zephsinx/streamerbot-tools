@@ -1,4 +1,4 @@
-﻿# Grow Your Furby
+﻿# Ad Warning Checker
 
 ## Table of Contents
 
